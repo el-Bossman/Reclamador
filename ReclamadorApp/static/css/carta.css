@@ -1,0 +1,59 @@
+       @media print {
+          /* Ocultar header y footer */
+          @page {
+            margin: 0;
+          }
+        
+          body {
+            margin-top: 50px;
+            margin-bottom: 50px;
+          }
+        
+          @page :header {
+            display: none;
+          }
+          @page :nav {
+            display: none;
+          }
+        
+          @page :footer {
+            display: none;
+          }
+          #navbar {
+            display: none;
+        }
+          #Btdocx {
+                display: none;
+            }
+          #Btprint {
+                display: none;
+            }
+        }
+        
+        .letter {
+          width: 600px;
+          margin: 0 auto;
+          font-family: Arial, sans-serif;
+        }
+        .header {
+          text-align: left;
+          margin-bottom: 20px;
+        }
+        .date {
+          font-size: 14px;
+          font-weight: bold;
+        }
+        .from {
+          font-weight: bold;
+        }
+        .to {
+          font-weight: bold;
+        }
+        .content {
+          margin-top: 40px;
+          line-height: 1.5;
+        }
+        .signature {
+        margin-top: 30px;
+        margin-bottom: -6px;
+        }

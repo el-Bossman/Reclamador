@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href={% static "images/favicon-32x32.png" %}>
+    <link rel="icon" type="image/x-icon" href={% static "images/favicon.ico" %}>
+    <link rel="stylesheet" href="https://bootswatch.com/5/litera/bootstrap.min.css">
+    <title>Reclamador</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <div class="container-fluid d-flex justify-content-center">
+            <img src="{% static "images/favicon-32x32.png" %}" alt="Reclamador-Logo">
+            <h1 class="text-light">Reclamador</h1>
+        </div>
+    </nav>
+    <br><br>
+        <div class="d-flex justify-content-center">
+            <div class="col col-xl-6">
+            <h4>Bienvenido/a aquí podrás redactar y corregir una carta de reclamo utilizando Inteligencia Artificial.</h4>
+            <hr>
+             <p>Completa este formulario y generaremos una carta lista para enviar.</p>   
+            </div>
+        </div>
+    <div class="d-flex justify-content-center">
+        
+        <div class="col col-xl-6">
+           <form action="{% url 'carta' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group mb-3">
+                    <label for="remitente">Nombre del remitente</label>
+                    <input type="text" required class="form-control" name="remitente" id="remitente" placeholder="Su nombre">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="destinatario">Nombre del destinatario</label>
+                    <input type="text" required class="form-control" name="destinatario"  id="destinatario" placeholder="Nombre de la persona o entidad a la que dirige su reclamo">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="genero">Género del emisor</label>
+                    <b class="form-text text-muted small"><small><br>* El género en el que se debe redactar: "afectado", "afectada", "nosotros", etc.</small></b>
+                    <select class="form-control"  id="genero" name="genero">
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Grupo">Grupo</option>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="emocion">Selecciona la emoción que mejor refleje tu experiencia para redactar tu carta:</label>
+                    <select class="form-select" id="emocion" name="emocion">
+                        <option value="frustracion">Frustración         - Expresa tu insatisfacción con respecto a la situación o el problema.</option>
+                        <option value="indignacion">Indignación         - Muestra tu enfado o enojo por lo sucedido.</option>
+                        <option value="decepcion">Decepción             - Comunica tu desilusión ante la falta de cumplimiento de expectativas.</option>
+                        <option value="injusticia">Injusticia           - Expresa tu sentido de injusticia o trato desigual.</option>
+                        <option value="impotencia">Impotencia           - Transmite tu sensación de falta de control o incapacidad para resolver el problema.</option>
+                        <option value="insatisfaccion">Insatisfacción   - Describe tu descontento o desagrado con el servicio o producto recibido.</option>
+                        <option value="preocupacion">Preocupación       - Expresa tu inquietud por las posibles consecuencias negativas del problema.</option>
+                        <option value="descontento">Descontento         - Muestra tu desagrado o malestar general con la situación.</option>
+                        <option value="irritacion">Irritación           - Expresa tu molestia o irritación ante la manera en que se ha manejado el asunto.</option>
+                      </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="extension">Extensión del texto (máximo)</label>
+                    <b class="form-text text-muted small"><small><br> * Ten en cuenta que mientras más corto el texto, más preciso.</small></b>
+                    <select class="form-control" id="extension" name="extension">
+                        <option value="500"> &nbsp;  500 caracteres   |Corto, ideal para un formulario de internet</option>
+                        <option value="1000">1000 caracteres |Medio, una carta de media página</option>
+                        <option value="2000">2000 caracteres |Largo, una carta de página completa</option>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="exampleFormControlTextarea1">Explica tu caso</label>
+                    <textarea class="form-control" required id="contexto" name="contexto" rows="3" placeholder="Explica aquí con tus propias palabras qué sucedió, menciona fechas y sujetos para generar una carta más precisa."></textarea>
+                </div>
+                <br><br>
+                <div class="d-grid gap-2">
+                    
+                    <button  type="submit" class="btn btn-lg btn-danger" type="button">Generar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="bg-danger text-center mt-4 text-light text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center p-3">
+          © 2023 Copyright:
+         <b> Reymon Delgado aka <a href="https://github.com/el-Bossman">el-Bossman</a> </b>
+        </div>
+        <!-- Copyright -->
+      </footer>
+</body>
+</html>
